@@ -1,0 +1,9 @@
+{
+  "code": "200",
+  "mString": "success",
+  "object": {
+    "cid": 1,
+    "categoryname": "CCTV",
+    "type": 1
+  }
+}

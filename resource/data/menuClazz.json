@@ -1,0 +1,43 @@
+{
+  "code": "200",
+  "mString": "success",
+  "count": 6,
+  "listData": [
+    {
+      "classid": 1,
+      "classname": "News Channel",
+      "cid": 1,
+      "islock": 0
+    },
+    {
+      "classid": 2,
+      "classname": "Economic Channel",
+      "cid": 1,
+      "islock": 0
+    },
+    {
+      "classid": 3,
+      "classname": "Sports Channel",
+      "cid": 1,
+      "islock": 0
+    },
+    {
+      "classid": 4,
+      "classname": "Music Channel",
+      "cid": 1,
+      "islock": 0
+    },
+    {
+      "classid": 5,
+      "classname": "Military Channel",
+      "cid": 1,
+      "islock": 0
+    },
+    {
+      "classid": 6,
+      "classname": "Shopping Channel",
+      "cid": 1,
+      "islock": 0
+    }
+  ]
+}

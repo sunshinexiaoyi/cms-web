@@ -1,0 +1,12 @@
+{
+  "code": "200",
+  "mString": "success",
+  "object": {
+    "episodeid": 1,
+    "name": "剧集",
+    "description": 1,
+    "movieid": 1,
+    "smilurl": null,
+    "issubtitle": 0
+  }
+}

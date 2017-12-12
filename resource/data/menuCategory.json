@@ -1,0 +1,17 @@
+{
+  "code": "200",
+  "mString": "success",
+  "count": 2,
+  "listData": [
+    {
+      "cid": 1,
+      "categoryname": "CCTV",
+      "type": 0
+    },
+    {
+      "cid": 2,
+      "categoryname": "Movie",
+      "type": 1
+    }
+  ]
+}

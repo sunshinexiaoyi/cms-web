@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>添加</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet"  href="../../../resource/plugins/layui/css/layui.css" media="all">
+</head>
+<body>
+
+<form class="layui-form gos-form" autocomplete="on">
+    <div class="layui-form-item">
+        <label class="layui-form-label">单集名称：</label>
+        <div class="layui-input-block">
+            <input type="text" name="name" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">集数：</label>
+        <div class="layui-input-block">
+            <input type="text" id = "category" name="description" lay-verify="required" placeholder="请输入集数"  class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item" style="display: none">
+        <label class="layui-form-label">电影id：</label>
+        <div class="layui-input-block">
+            <input type="text" id = "movieId" name="movieid" lay-verify="required"   class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item" style="display: none">
+        <label class="layui-form-label">剧集id：</label>
+        <div class="layui-input-block">
+            <input type="text" id="episodeId" name="episodeid" lay-verify="required" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <button class="layui-btn layui-input-block" lay-submit="">提交</button>
+    </div>
+    </form>
+
+<script src="../../../resource/plugins/layui/layui.js" charset="utf-8"></script>
+
+<script>
+    layui.config({
+        base:'../../../resource/js/'
+    }).use(['ott','form', 'layedit', 'jquery'], function() {
+        var form = layui.form;
+        var layer = layui.layer;
+        var $ = layui.$;
+        /*ott 信息 -- start*/
+        var ott = layui.ott;
+        var moduleName = ott.dict.constant.module.episode;
+        var moduleInfo = ott.module.getInfo(moduleName);
+        var url = moduleInfo.url;
+
+        var dict = moduleInfo.dict;
+        var http = ott.http;
+
+        var utils= ott.myutils;
+        var submitUrl = '';     //表单提交地址
+        var updateType = ott.dict.constant.updateType;
+
+        var type ;          //类型
+        var id = -1;
+        /*ott 信息 -- end*/
+
+
+        init();
+
+        function init(){
+            initForm();
+            initPageLang();
+
+            initParam();
+        }
+
+        function initParam(){
+            type = utils.getUpdateType();
+            console.info("更新类型:"+type);
+            if(type == updateType.add){
+                submitUrl = url.add;
+            }else if(type == updateType.edit){
+
+                id = utils.getId();
+                var episodeId = utils.getUrlParam("episodeId");
+                console.info("episodeId:"+episodeId);
+                $("#movieId").val(id);
+                $("#episodeId").val(episodeId);
+                console.info("id:"+id);
+				
+                submitUrl = url.edit;
+                http.post({
+                    url:url.load,
+                    data:{episodeId:episodeId},
+                    success:function(data){
+                        utils.setValue(data.object);
+                        form.render(); //更新全部
+                    }
+                });
+            }
+        }
+
+        function initForm(){
+            //监听提交
+            form.on('submit', function(data){
+                http.submit({
+                    url:submitUrl,//添加样式
+                    elem:'.layui-form',
+                    success:function(data){
+                        layer.msg('提交成功', {icon: 1,time:1000});//0警告 1 ok 2 错误
+                        parent.layer.msg('提交成功', {icon: 1,time:1000});//0警告 1 ok 2 错误
+
+                        dialog.closeAndRefresh();
+                    },
+                    fail:function(data){
+                        layer.msg('提交失败', {icon: 2,time:1000});//0警告 1 ok 2 错误
+                    }
+                });
+                return false;
+            });
+        }
+
+        function initPageLang(){
+
+        }
+
+
+    });
+</script>
+</body>
+</html>

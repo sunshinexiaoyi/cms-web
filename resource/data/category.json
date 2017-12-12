@@ -1,0 +1,27 @@
+{
+  "code": "200",
+  "mString": "success",
+  "count": 4,
+  "listData": [
+    {
+      "cid": 1,
+      "categoryname": "CCTV",
+      "type": 1
+    },
+    {
+      "cid": 2,
+      "categoryname": "Movie",
+      "type": 2
+    },
+    {
+      "cid": 3,
+      "categoryname": "测试添加样式信息0.6789798533232869",
+      "type": 15
+    },
+    {
+      "cid": 4,
+      "categoryname": "测试添加样式信息0.4497085701588046",
+      "type": 15
+    }
+  ]
+}

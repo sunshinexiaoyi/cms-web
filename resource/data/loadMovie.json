@@ -1,0 +1,33 @@
+{
+  "code": "200",
+  "mString": "success",
+  "object": {
+    "movieid": 1,
+    "moviename": "Moana",
+    "releasedate": "2017-06-20",
+    "director": "Ron Clements, Don Hall",
+    "actor": "Aulii Cravalho, Dwayne Johnson, Rachel House",
+    "area": "USA",
+    "rcompany": "KSA.KEDDUOT.DT",
+    "copyright": "KSA.KEDDUOT.DT.VS",
+    "score": "8.0",
+    "episodes": 1,
+    "language": "English",
+    "ispay": 1,
+    "referenceprice": 5.0,
+    "islock": 0,
+    "content": "The only way to heal the island is to persuade Maui to return Te Fiti is heart, so Moana sets off on an epic journey across the Pacific. The film is based on stories from Polynesian mythology",
+    "categoryid": 2,
+    "classid": 2,
+    "updatefrequency": null,
+    "level": 1,
+    "isplay": 1,
+    "examinestate": 1,
+    "examinedate": "2017-11-10",
+    "isreferral": 0,
+    "ismultybitrate": 0,
+    "drmstate": 0,
+    "icon": "/upload/201505301430243.jpg",
+    "imgfile":"/web/img/favicon.ico"
+  }
+}

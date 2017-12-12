@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <link rel="Bookmark" href="../resource/images/favicon.ico" >
+    <link rel="Shortcut Icon" href="../resource/images/favicon.ico" />
+    <link rel="stylesheet"  href="../resource/plugins/layui/css/layui.css">
+    <link rel="stylesheet"  href="../resource/css/login.css">
+	
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+</head>
+<body>
+<div class="wrapper">
+
+    <div class="container">
+        <h1>OTT后台管理系统</h1>
+        <form action="" method="post" id="frm_login" class="layui-form">
+
+            <input  class="input-effects" id="username" name="username"  lay-verify="required" type="text" placeholder="请输入用户名">
+
+            <input  class="input-effects" id="password" name="password"  lay-verify="required" type="password" placeholder="请输入密码">
+			<div >
+	            <div style="
+    height: 56px;
+    position: absolute;
+    left: 156px;
+    display: inline-block;">
+	            	<img id="captcha" src="/cms/Kaptcha.jpg" style="margin-top: 10px;" width="80" height="27" title="看不清楚？点击图片刷新"/>
+	            </div>
+	            <div style="height: 56px;
+    position: relative;
+    left: 39px;
+    display: inline-block;">
+	            	<input name="kaptcha" id="kaptcha" class="verification-input"  lay-verify="required" type="text" placeholder="点击右方验证码刷新">
+	            </div>
+            </div>
+            <button class="form button" id="regSubmit" lay-submit="" lay-filter="adminlogin" style="width: 20%">登陆</button>
+            <button class="form button" type="reset"   style="width: 20%">重置</button>
+        </form>
+
+        <!--底部版权信息 开始-->
+        <div style="position: relative; bottom: -28px"><p>深圳市高斯贝尔有限公司 © 2017</p></div>
+        <!--底部版本信息 结束-->
+
+    </div>
+
+    <!--语言选择-->
+    <form class="layui-form language-set">
+        <select name="language" lay-filter="setLanguage">
+            <option style="text-align: center; align-content: center" value="zh_CN">中文</option>
+            <option style="text-align: center" value="en_US">english</option>
+        </select>
+    </form>
+    <ul class="bg-bubbles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+
+
+<script type="text/javascript" src="../resource/plugins/layui/layui.js"></script>
+
+<script>	
+    layui.config({
+        base:"../resource/js/"
+    }).use(['form','jquery','ott'], function(){    	
+        var form = layui.form,$ = layui.$;
+
+        /*ott 信息 -- start*/
+        var ott = layui.ott;
+        var moduleName = ott.dict.constant.module.login;
+        var moduleInfo = ott.module.getInfo(moduleName);
+
+        var url = moduleInfo.url;
+        console.info(url);
+        var http = ott.http;
+        //var select = ott.select;
+
+        //监听提交
+        form.on('submit(adminlogin)', function(data){
+        //alert(data.field.kaptcha);
+        //alert(data.field.username+"----"+data.field.password);
+        http.submit({
+        	elem:"#frm_login",
+        	url:url.login,
+       	 	success : function(data) {
+                layer.msg('登陆成功', {icon: 1,time:1000});//0警告 1 ok 2 错误
+                window.location.href="index.html";
+            },
+            fail : function(msg) {
+        	    console.error(msg);
+                if(msg === "error"){
+                    layer.msg('验证码输入错误', {icon: 2,time:1000});//0警告 1 ok 2 错误
+                    $("#captcha").click();  //验证码错误时模拟点击 刷新验证码
+                }else {
+                    layer.msg('登陆失败', {icon: 2,time:1000});//0警告 1 ok 2 错误
+                }
+
+
+           	}
+        });
+            return false;
+        });
+
+        //语言选择下拉添加属性
+        /* $("[name='language']").attr("style", "text-align: center; font-size: 17px");
+ */
+        //选择语言监听
+        form.on('select(setLanguage)', function(data){
+            console.log(data.elem); //得到select原始DOM对象
+            console.log(data.value); //得到被选中的值
+            console.log(data.othis); //得到美化后的DOM对象
+            var language = data.value;
+            http.post({
+                url: url.languange,
+                data: {"language": language},
+                dataType: 'json',
+                success: function(data) {
+                    layer.msg('切换语言成功', {icon: 1,time:1000});//0警告 1 ok 2 错误
+                },
+                fail: function(msg) {
+                    layer.msg('切换语言失败', {icon: 2,time:1000});//0警告 1 ok 2 错误
+                }
+            });
+        });
+
+        //提交验证码
+        form.verify({
+            verification: function(value){
+                console.info(value);
+                http.post({
+                    url: url.kaptcha,
+                    data: {"kaptcha":value},
+                    dataType: 'json',
+                    success: function(data) {
+                        console.info(data.mString);
+                    },
+                    fail: function() {
+                        console.info("error");
+                        return '输入的验证码有误';
+                    }
+                });
+            }
+        });
+
+		$("#captcha").on('click',function(){
+            $(this).attr('src', '/cms/Kaptcha.jpg?' + Math.floor(Math.random()*100) );
+        });
+       
+    });
+</script>
+
+</body>
+</html>

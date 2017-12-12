@@ -1,0 +1,84 @@
+{
+  "code": "200",
+  "mString": "success",
+  "count": 11,
+  "listData": [
+    {
+      "classname": "News Channel",
+      "categoryname": "CCTV",
+      "cid": 1,
+      "islock": 0,
+      "classid": 1
+    },
+    {
+      "classname": "Economic Channel",
+      "categoryname": "CCTV",
+      "cid": 1,
+      "islock": 0,
+      "classid": 2
+    },
+    {
+      "classname": "Sports Channel",
+      "categoryname": "CCTV",
+      "cid": 1,
+      "islock": 0,
+      "classid": 3
+    },
+    {
+      "classname": "Music Channel",
+      "categoryname": "CCTV",
+      "cid": 1,
+      "islock": 0,
+      "classid": 4
+    },
+    {
+      "classname": "Military Channel",
+      "categoryname": "CCTV",
+      "cid": 1,
+      "islock": 0,
+      "classid": 5
+    },
+    {
+      "classname": "Shopping Channel",
+      "categoryname": "CCTV",
+      "cid": 1,
+      "islock": 0,
+      "classid": 6
+    },
+    {
+      "classname": "Action",
+      "categoryname": "Movie",
+      "cid": 2,
+      "islock": 0,
+      "classid": 7
+    },
+    {
+      "classname": "Comedy",
+      "categoryname": "Movie",
+      "cid": 2,
+      "islock": 0,
+      "classid": 8
+    },
+    {
+      "classname": "Horrible",
+      "categoryname": "Movie",
+      "cid": 2,
+      "islock": 0,
+      "classid": 9
+    },
+    {
+      "classname": "Fantasy",
+      "categoryname": "Movie",
+      "cid": 2,
+      "islock": 0,
+      "classid": 10
+    },
+    {
+      "classname": "Animated",
+      "categoryname": "Movie",
+      "cid": 2,
+      "islock": 0,
+      "classid": 11
+    }
+  ]
+}

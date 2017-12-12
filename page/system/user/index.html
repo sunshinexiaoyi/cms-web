@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>权限管理</title>
+    <link rel="stylesheet" href="../../../resource/plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../../resource/css/public.css" media="all">
+    <link rel="stylesheet" href="../../../resource/css/app.css" media="all">
+</head>
+
+<body>
+    <!--表格工具栏 * 折叠面板-->
+    <div class="layui-collapse gos-table-operation " lay-filter="test">
+        <div class="layui-colla-item">
+            <h2 class="layui-colla-title layui-bg-cyan">表格操作</h2>
+            <div class="layui-colla-content layui-show layui-fluid">
+                <div class="layui-row layui-col-space3">
+                    <div class="layui-col-xs12 layui-col-sm6 layui-col-md7">
+                        <button class="layui-btn  layui-btn-normal" id="add">
+                            <i class="layui-icon">&#xe654;</i>添加
+                        </button>
+                        <button class="layui-btn layui-btn-danger" id="del">
+                            <i class="layui-icon">&#xe640;</i>删除
+                        </button>
+                        <button class="layui-btn layui-bg-cyan" id="refresh">
+                            <i class="layui-icon">&#x1002;</i>刷新
+                        </button>
+                    </div>
+
+                    <div class="layui-col-xs12 layui-col-sm6  layui-col-sm-offset6 layui-col-md2 layui-col-md-offset3" >
+                        <div  class="layui-row layui-col-space3">
+                            <div class="layui-col-xs6 layui-col-sm6">
+                                <div class="layui-input-inline" >
+                                    <input type="text" value="" placeholder="请输入关键字" class="layui-input search_input" id="queryInput">
+                                </div>
+                            </div>
+                            <div class="layui-col-xs6 layui-col-sm4">
+                                <button class="layui-btn" id="query">
+                                    <i class="layui-icon">&#xe615;</i>查询
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-form ">
+        <table  id="table" lay-filter="table"></table>
+    </div>
+</body>
+<script src="../../../resource/plugins/layui/layui.js"></script>
+
+
+<!--表格行设置栏-->
+<script type="text/html" id="tabBar">
+    <div class="layui-tab-set">
+        <i class="layui-icon edit" title="编辑" lay-event="edit">&#xe642;</i>
+        <i class="layui-icon del"  title="删除" lay-event="del">&#xe640;</i>
+    </div>
+</script>
+
+<script>
+    layui.config({
+        base:'../../../resource/js/'
+    }).use(['table','ott','element'], function(){
+        var $ = layui.$;
+        var table = layui.table;
+        var element = layui.element;    //表格操作栏 必须
+
+        /*ott 信息 -- start*/
+        var ott = layui.ott;
+        var moduleName = ott.dict.constant.module.user;//模块名
+        var moduleInfo = ott.module.getInfo(moduleName);
+
+        var url = moduleInfo.url;
+        var dict = moduleInfo.dict;
+        //console.info(dict);
+
+        var http = ott.http;
+        var tableSetting = ott.tableset;
+        var window = ott.dialog;
+        /*ott 信息 -- end*/
+
+        var tableIns = null;        //表格实列
+
+        var param ="";
+
+        init();
+
+        function init(){
+            initTable();
+            initTableSet();
+        }
+
+        function initTable(){
+            tableIns = table.render( $.extend({},tableSetting,  {
+                        elem: '#table'       //指定原始 table 容器的选择器或 DOM
+                        ,id: 'table'        //基础参数id
+                        ,url:url.list
+                        ,where:{
+                            param:param
+                        }
+                        ,cols: [[
+                             {type:"numbers",align:'center'}
+                            ,{type:"checkbox",align:'center'}//checkbox（复选框列）、space（空列）、numbers（序号列）
+                            ,{field:dict.userName.field, title:dict.userName.title, sort: true,align:'center'}
+                            ,{field:dict.reaName.field, title:dict.reaName.title, sort: true,align:'center'}
+                            ,{field:dict.phone.field, title:dict.phone.title, sort: true,align:'center'}
+                            ,{field:dict.email.field, title:dict.email.title, sort: true,align:'center'}
+                            ,{field:dict.createTime.field, title:dict.createTime.title, sort: true,align:'center'}
+                            ,{field:dict.roleName.field, title:dict.roleName.title, sort: true,align:'center'}
+                            ,{field:dict.set.field, title: dict.set.title,toolbar:'#tabBar',align:'center'}
+                        ]]
+                    }
+            ));
+
+            /*监听工具条*/
+            table.on('tool(table)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+                var data = obj.data; //获得当前行数据
+                var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+                var tr = obj.tr; //获得当前行 tr 的DOM对象
+               console.info(data);
+                if(layEvent === 'del'){ //删除
+                    sendDel([data]);
+                } else if(layEvent === 'edit'){ //编辑
+                    window.openEdit(data.uid);
+                }
+            });
+        }
+
+        function updateTable(){
+            tableIns.reload({
+                where:{                
+                    param:param
+                }
+            });
+        }
+
+        /* 初始化表格*/
+        function initTableSet(){
+            $("#queryInput").on("change",function(){
+                param = $("#queryInput").val();
+                updateTable();
+            });
+
+            $("#query").on('click',function(){
+                tableIns.reload({
+                    url:url.list,
+                    where:{
+                        param:$("#queryInput").val()
+                    }
+                });
+            });
+
+            $("#add").on('click',function(){
+                window.openAdd();
+            });
+
+            $("#del").on('click',function(){
+                var checkStatus = table.checkStatus('table'); //table即为基础参数id对应的值
+                //console.info(checkStatus);
+                var delLen = checkStatus.data.length;
+                if(0 == delLen){//如果未选择
+                    layer.msg('尚未选择条目', {icon: 0,time:1000});//0警告 1 ok 2 错误
+                    return;
+                }
+                sendDel(checkStatus.data);
+
+            });
+
+            $("#refresh").on('click',function(){
+                console.info("刷新表格");
+                updateTable();
+            });
+        }
+
+        /*发送删除*/
+        function sendDel(list){
+            layer.confirm('确认删除该'+list.length+'项吗？',function(index){
+                layer.close(index);
+                console.info("----发送删除列表-----");
+                var sendData = '';
+                for(var i=0;i<list.length;i++){
+                    sendData += list[i].uid+',';
+                }
+
+                sendData = sendData.substr(0,sendData.length-1);
+                console.info(list);
+                console.info(sendData);
+
+                http.post({
+                    url:url.del,
+                    data:{userIds:sendData},
+                    success:function(data){
+                        updateTable();
+                        layer.msg('删除成功', {icon: 1,time:1000});//0警告 1 ok 2 错误
+                    },
+                    fail:function(data){
+                        layer.msg('删除失败', {icon: 2,time:1000});//0警告 1 ok 2 错误
+
+                    }
+                });
+            });
+        }
+    });
+    
+</script>
+
+</html>

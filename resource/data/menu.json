@@ -1,0 +1,151 @@
+{
+  "code": "200",
+  "mString": "success",
+  "count": 0,
+  "listData": [
+    {
+      "menuid": 1,
+      "menuname": "系统管理",
+      "menuurl": "",
+      "parentid": null,
+      "icon":"fa-bullseye",
+      "spread": "false"
+    },
+    {
+      "menuid": 3,
+      "menuname": "用户管理",
+      "menuurl": "system/user/index.html",
+      "parentid": 1,
+      "icon":"fa-bullseye",
+      "spread": "false"
+    },
+    {
+      "menuid": 4,
+      "menuname": "角色管理",
+      "menuurl": "system/role/index.html",
+      "parentid": 1,
+      "icon":"fa-bullseye",
+      "spread": "false"
+    },
+    {
+      "menuid": 5,
+      "menuname": "系统版本",
+      "menuurl": "system/version/index.html",
+      "parentid": 1,
+      "icon":"fa-bullseye",
+      "spread": "false"
+    },
+    {
+      "menuid": 6,
+      "menuname": "服务器组管理",
+      "menuurl": "system/server/index.html",
+      "parentid": 1,
+      "icon":"fa-bullseye",
+      "spread": "false"
+    },
+    {
+      "menuid": 8,
+      "menuname": "内容管理",
+      "menuurl": null,
+      "parentid": null,
+      "icon":"fa-bullseye",
+      "spread": "false"
+    },
+    {
+      "menuid": 9,
+      "menuname": "片源样式管理",
+      "menuurl": "content/category/index.html",
+      "parentid": 8,
+      "icon":"fa-bullseye",
+      "spread": "false"
+    },
+    {
+      "menuid": 10,
+      "menuname": "片源风格管理",
+      "menuurl": "content/class/index.html",
+      "parentid": 8,
+      "icon":"fa-bullseye",
+      "spread": "false"
+    },
+    {
+      "menuid": 12,
+      "menuname": "直播节目管理",
+      "menuurl": "content/live/index.html",
+      "parentid": 8,
+      "icon":"fa-bullseye",
+      "spread": "false"
+    },
+    {
+      "menuid": 13,
+      "menuname": "点播节目管理",
+      "menuurl": "content/vod/index.html",
+      "parentid": 8,
+      "icon":"fa-bullseye",
+      "spread": "false"
+    },
+    {
+      "menuid": 14,
+      "menuname": "EPG信息管理",
+      "menuurl": "content/epg/index.html",
+      "parentid": 8,
+      "icon":"fa-bullseye",
+      "spread": "false"
+    },
+    {
+      "menuid": 15,
+      "menuname": "运营管理",
+      "menuurl": null,
+      "parentid": null,
+      "icon":"fa-bullseye",
+      "spread": "false"
+    },
+    {
+      "menuid": 16,
+      "menuname": "产品服务管理",
+      "menuurl": "operation/product/index.html",
+      "parentid": 15,
+      "icon":"fa-bullseye",
+      "spread": "false"
+    },
+    {
+      "menuid": 17,
+      "menuname": "广告管理",
+      "menuurl": "operation/advertising /index.html",
+      "parentid": 15,
+      "icon":"fa-bullseye",
+      "spread": "false"
+    },
+    {
+      "menuid": 18,
+      "menuname": "统计管理",
+      "menuurl": "operation/statistics/index.html",
+      "parentid": 15,
+      "icon":"fa-bullseye",
+      "spread": "false"
+    },
+    {
+      "menuid": 19,
+      "menuname": "日志查询",
+      "menuurl": "operation/log/index.html",
+      "parentid": 15,
+      "icon":"fa-bullseye",
+      "spread": "false"
+    },
+    {
+      "menuid": 20,
+      "menuname": "软件更新",
+      "menuurl": "operation/update/index.html",
+      "parentid": 15,
+      "icon":"fa-bullseye",
+      "spread": "false"
+    },
+    {
+      "menuid": 21,
+      "menuname": "用户反馈",
+      "menuurl": "operation/feedback/index.html",
+      "parentid": 15,
+      "icon":"fa-bullseye",
+      "spread": "false"
+    }
+  ]
+}

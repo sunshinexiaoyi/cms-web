@@ -1,0 +1,11 @@
+{
+  "code": "200",
+  "mString": "success",
+  "object": {
+    "classname": "News Channel",
+    "categoryname": "CCTV",
+    "cid": 1,
+    "islock": 1,
+    "classid": 1
+  }
+}
