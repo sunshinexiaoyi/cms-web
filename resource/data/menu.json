@@ -42,6 +42,13 @@
       "parentid": 1,
       "icon":"fa-bullseye",
       "spread": "false"
+    }, {
+      "menuid": 19,
+      "menuname": "日志查询",
+      "menuurl": "system/log/index.html",
+      "parentid": 1,
+      "icon":"fa-bullseye",
+      "spread": "false"
     },
     {
       "menuid": 8,
@@ -110,7 +117,7 @@
     {
       "menuid": 17,
       "menuname": "广告管理",
-      "menuurl": "operation/advertising /index.html",
+      "menuurl": "operation/advertising/index.html",
       "parentid": 15,
       "icon":"fa-bullseye",
       "spread": "false"
@@ -123,14 +130,7 @@
       "icon":"fa-bullseye",
       "spread": "false"
     },
-    {
-      "menuid": 19,
-      "menuname": "日志查询",
-      "menuurl": "operation/log/index.html",
-      "parentid": 15,
-      "icon":"fa-bullseye",
-      "spread": "false"
-    },
+
     {
       "menuid": 20,
       "menuname": "软件更新",

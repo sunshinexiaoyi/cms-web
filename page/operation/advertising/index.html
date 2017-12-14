@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>统计图表管理</title>
+    <link rel="stylesheet" href="../../../resource/plugins/layui/css/layui.css" media="all">
+</head>
+<style>
+    html{
+        height:100%;
+    }
+    body {
+        height: 95%;
+    }
+
+
+    .layui-tab,.layui-tab .layui-tab-content,.layui-tab .layui-tab-content .layui-tab-item ,.layui-tab .layui-tab-content iframe{
+        height: 100%;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    .layui-tab,.layui-tab .layui-tab-content{
+        height: 95%;
+    }
+    iframe{
+        border-width: 0;
+        width: 100%;
+    }
+
+</style>
+<body>
+<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" >
+    <ul class="layui-tab-title">
+        <li  class="layui-this">文字广告</li>
+        <li>图片广告</li>
+        <li>视频广告</li>
+    </ul>
+    <div class="layui-tab-content" >
+        <div class="layui-tab-item layui-show"><iframe src="../adText/index.html"></iframe></div>
+        <div class="layui-tab-item"><iframe></iframe></div>
+        <div class="layui-tab-item"><iframe ></iframe></div>
+    </div>
+</div>
+
+</body>
+<script src="../../../resource/plugins/layui/layui.js"></script>
+
+<script>
+    layui.use(['element','jquery'], function(){
+        var element = layui.element;    //表格操作栏 必须
+        var $ = layui.jquery;
+        console.info($);
+        //console.info($("iframe").eq(0).attr());
+
+        var url = ["../adText/index.html","../adPict/index.html","../adVideo/index.html"];
+        element.on('tab',function (data) {
+            /*
+            * 因为点击时页面还未加载完成，表格无法知晓宽度
+            * 所以进行延时操作，等待页面加载完成
+            * */
+            setTimeout(function () {
+                $(".layui-show iframe").attr("src",url[data.index]);
+            },30);
+        })
+    });
+
+</script>
+
+</html>

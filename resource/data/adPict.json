@@ -1,0 +1,13 @@
+{
+  "code": "200",
+  "mString": "success",
+  "count": 1,
+  "listData": [
+    {
+      "adId": 1,
+      "url": "http://192.168.120.21:8080/upload/game.html",
+      "adUrl": "http://192.168.120.21:8080/upload/1.jpg",
+      "adName": "1.jpg"
+    }
+  ]
+}

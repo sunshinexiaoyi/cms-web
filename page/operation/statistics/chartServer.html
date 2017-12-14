@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>服务器状态</title>
+
+</head>
+<body>
+<script src="../../../resource/plugins/Highcharts-6.0.3/code/highcharts.js"></script>
+<script src="../../../resource/plugins/Highcharts-6.0.3/code/modules/exporting.js"></script>
+<div id="container" ></div>
+
+
+<script type="text/javascript">
+
+Highcharts.chart('container', {
+    chart: {
+        type: 'bar'
+    },
+    title: {
+        text: '服务器连接状态'
+    },
+    subtitle: {
+        text: 'Source: <a href="https://en.wikipedia.org/wiki/World_population">gospell.com</a>'
+    },
+    xAxis: {
+        categories: ['连接总数', '直播连接', 'Dvr连接', '点播连接'],
+        title: {
+            text: null
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: '连接次数',
+            align: 'high'
+        },
+        labels: {
+            overflow: 'justify'
+        }
+    },
+    tooltip: {
+        valueSuffix: ' millions'
+    },
+    plotOptions: {
+        bar: {
+            dataLabels: {
+                enabled: true
+            }
+        }
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'top',
+        x: -40,
+        y: 80,
+        floating: true,
+        borderWidth: 1,
+        backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+        shadow: true
+    },
+    credits: {
+        enabled: false
+    },
+    series: [{
+        name: '2017年',
+        data: [800, 31, 335, 203]
+    }]
+});
+		</script>
+	</body>
+</html>

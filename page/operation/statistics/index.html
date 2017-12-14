@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>广告</title>
+    <link rel="stylesheet" href="../../../resource/plugins/layui/css/layui.css" media="all">
+</head>
+<style>
+    html{
+        height:100%;
+    }
+    body {
+        height: 95%;
+    }
+
+
+    .layui-tab,.layui-tab .layui-tab-content,.layui-tab .layui-tab-content .layui-tab-item ,.layui-tab .layui-tab-content iframe{
+        height: 100%;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    .layui-tab,.layui-tab .layui-tab-content{
+        height: 95%;
+    }
+    iframe{
+        border-width: 0;
+        width: 100%;
+    }
+
+</style>
+<body>
+<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" >
+    <ul class="layui-tab-title">
+        <li  class="layui-this" data-url ="charMovie.html">影片统计</li>
+        <li>服务器状态</li>
+        <li>播放统计</li>
+        <li>在线用户</li>
+    </ul>
+    <div class="layui-tab-content" style="height: 100%" >
+        <div class="layui-tab-item layui-show"><iframe src="chartMovie.html"></iframe></div>
+        <div class="layui-tab-item"><iframe src="chartServer.html"></iframe></div>
+        <div class="layui-tab-item"><iframe src="chartMovie.html"></iframe></div>
+        <div class="layui-tab-item"><iframe src="chartMovie.html"></iframe></div>
+    </div>
+</div>
+
+</body>
+<script src="../../../resource/plugins/layui/layui.js"></script>
+
+<script>
+    layui.use(['element'], function(){
+        var element = layui.element;    //表格操作栏 必须
+    });
+
+</script>
+
+</html>

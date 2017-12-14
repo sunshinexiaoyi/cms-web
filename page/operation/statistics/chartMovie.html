@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+
+</head>
+<body>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="../../../resource/plugins/Highcharts-6.0.3/code/highcharts.js"></script>
+<script src="../../../resource/plugins/Highcharts-6.0.3/code/modules/series-label.js"></script>
+<script src="../../../resource/plugins/Highcharts-6.0.3/code/modules/exporting.js"></script>
+
+<div id="container"></div>
+
+<script type="text/javascript">
+
+Highcharts.chart('container', {
+
+    title: {
+        text: '影片播放统计, 1月-12月'
+    },
+
+    subtitle: {
+        text: 'Source: gospell.com'
+    },
+
+    yAxis: {
+        title: {
+            text: '次数'
+        }
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+    },
+
+    plotOptions: {
+        series: {
+            label: {
+                connectorAllowed: false
+            },
+            pointStart: 1
+        }
+    },
+
+    series: [{
+        name: '影片',
+        data: [0, 9, 9, 0, 174, 76, 24, 11,24,46,317,102]
+    }],
+
+    responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 500
+            },
+            chartOptions: {
+                legend: {
+                    layout: 'horizontal',
+                    align: 'center',
+                    verticalAlign: 'bottom'
+                }
+            }
+        }]
+    }
+
+});
+		</script>
+	</body>
+</html>

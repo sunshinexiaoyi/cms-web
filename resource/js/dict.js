@@ -43,6 +43,10 @@ layui.define(function(exports){
             /*运营服务管理*/
             product:'product' ,          //产品服务管理
             advertising:'advertising',  //广告服务管理
+            adPict:'adPict',            //图片广告
+            adText:'adText',            //文字广告
+            adVideo:'adVideo',           //视频广告
+
             statistics:'statistics',    //统计管理
             log:'log',                  //日志查询
             update:'update',            //软件更新
@@ -134,6 +138,104 @@ layui.define(function(exports){
             set:set
         };
 
+        mod[constant.module.update] = {
+            /*表格*/
+            fileName: new MODULE_ITEM('filename', '软件名称','fileName'),
+            versionCode: new MODULE_ITEM('versioncode', '版本号','versionCode'),
+            versionName: new MODULE_ITEM('versionname', '版本名称','versionName'),
+            updateType: new MODULE_ITEM('updatetype', '升级类型','updateType'),//1强制升级、2手动升级
+            type: new MODULE_ITEM('type', '设备类型','type'),//设备类型：1手机、2平板、3机顶盒、4其他
+            size: new MODULE_ITEM('size', '文件大小','size'),
+            url: new MODULE_ITEM('url', '下载地址','url'),
+
+            content: new MODULE_ITEM('content', '描述','content'),
+            otId: new MODULE_ITEM('ottd', '设备编号','otId'),
+            md5: new MODULE_ITEM('md5', 'Md5值','md5'),
+            serialNoBegin: new MODULE_ITEM('serialnobegin', '序列号开始','serialNoBegin'),
+            serialNoEnd: new MODULE_ITEM('serialnoend', '序列号结束','serialNoEnd'),
+
+            set:set
+        };
+
+        mod[constant.module.log] = {
+            /*表格*/
+            createDate: new MODULE_ITEM('createdate', '日志日期','createDate'),
+            logContext: new MODULE_ITEM('logcontext', '日志内容','logContext'),
+            userName: new MODULE_ITEM('username', '操作员','userName'),
+
+            logState: new MODULE_ITEM('logstate', '状态值','logState'),//
+            type: new MODULE_ITEM('type', '设备类型','type'),//服务端操作日志、终端接口调用日志、系统异常日志
+            invokeClass: new MODULE_ITEM('invokeclass', '调用类名','invokeClass'),
+
+            set:set
+        };
+
+        mod[constant.module.feedback] = {
+            /*表格*/
+            content: new MODULE_ITEM('content', '反馈意见','content'),
+            clientName: new MODULE_ITEM('clientname', '客户名','clientName'),//
+            clientCode: new MODULE_ITEM('clientcode', '客户编号','clientCode'),
+            feedbackTime: new MODULE_ITEM('feedbacktime', '提交时间','feedbacktime'),
+
+            set:set
+        };
+
+
+        mod[constant.module.epg] = {
+            /*表格*/
+            epgName: new MODULE_ITEM('epgname', '名称','epgName'),
+            programDate: new MODULE_ITEM('programdate', '节目日期','programDate'),//
+            week: new MODULE_ITEM('week', '星期','week'),
+            playTime: new MODULE_ITEM('playtime', '播放时间','playTime'),
+            channelId: new MODULE_ITEM('channelid', '频道ID','channelId'),
+            duration: new MODULE_ITEM('duration', '时长','duration'),
+            playUrl: new MODULE_ITEM('playurl', '播放地址','playUrl'),
+            examineState: new MODULE_ITEM('examinestate', '审核状态','examineState'),
+
+            set:set
+        };
+
+        mod[constant.module.live] = {
+            /*表格*/
+            channelName: new MODULE_ITEM('channelname', '频道名称','channelName'),
+            inputType: new MODULE_ITEM('inputtype', '输入模式','inputType'),//节目信号类型：UDP级联选择HLS、URL级联选择HLS、GM8000A级联选择GM8000A
+            outputType: new MODULE_ITEM('outputtype', '输出模式','outputType'),//输出类型(级联选择)：HLS、GM8000A
+            outsideUrl: new MODULE_ITEM('outsideurl', '输出地址','outsideUrl'),//推送地址(URL类型)
+            isLock: new MODULE_ITEM('islock', '是否加锁','isLock'),//是否加锁：0否、1是
+            referencePrice: new MODULE_ITEM('referenceprice', 'Epg菜单名','referencePrice'),//参考价格
+            provider: new MODULE_ITEM('provider', '来源','provider'),//（供应商）来源
+
+            set:set
+        };
+
+        mod[constant.module.adPict] = {
+            /*表格*/
+            adName: new MODULE_ITEM('adName', '广告名称','adName'),
+            adUrl: new MODULE_ITEM('adUrl', '图片地址','adUrl'),
+            url: new MODULE_ITEM('url', '链接地址','url'),
+            set:set
+        };
+
+        mod[constant.module.adText] = {
+            /*表格*/
+            adContent: new MODULE_ITEM('adContent', '内容','adContent'),
+            adScrollTimes: new MODULE_ITEM('adScrollTimes', '滚动时长','adScrollTimes'),
+            startTime: new MODULE_ITEM('startTime', '开始时间','startTime'),
+            intervalTime: new MODULE_ITEM('intervalTime', '间隔时长','intervalTime'),//间隔时间（单位：分钟）
+            set:set
+        };
+
+        mod[constant.module.adVideo] = {
+            /*表格*/
+            adName: new MODULE_ITEM('adName', '广告名称','adName'),
+            adUrl: new MODULE_ITEM('adUrl', '视频地址','adUrl'),
+            playDate: new MODULE_ITEM('playDate', '播放日期','playDate'),
+            playType: new MODULE_ITEM('playType', '插播方式','playType'),//插播方式：0开始位置、1中间位置、2结束位置
+            validDays: new MODULE_ITEM('validDays', '有效期','validDays'),//有效期（单位：天）
+            status: new MODULE_ITEM('status', '状态','status'),//状态：0停播、1在播放
+
+            set:set
+        };
 
         var formatMod = [];
         formatMod[constant.lang.en] = [];

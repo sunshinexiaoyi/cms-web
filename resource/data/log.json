@@ -1,0 +1,147 @@
+{
+  "code": "200",
+  "mString": "success",
+  "count": 2251,
+  "listData": [
+    {
+      "logid": 2669,
+      "createdate": "2017/12/13 14:32:01",
+      "logcontext": "ç”¨æˆ·adminæˆåšÿç™»å½•ottç³»ç»ÿï¼ç™»å½•æ—¶é—´ï¼š2017-12-13 14:32:01",
+      "username": "admin",
+      "menuname": "ç™»å½•ottç³»ç»ÿ"
+    },
+    {
+      "logid": 2668,
+      "createdate": "2017/12/13 13:40:06",
+      "logcontext": "ç”¨æˆ·adminæˆåšÿç™»å½•ottç³»ç»ÿï¼ç™»å½•æ—¶é—´ï¼š2017-12-13 13:40:06",
+      "username": "admin",
+      "menuname": "ç™»å½•ottç³»ç»ÿ"
+    },
+    {
+      "logid": 2667,
+      "createdate": "2017/12/13 07:59:07",
+      "logcontext": "ç”¨æˆ·adminæˆåšÿç™»å½•ottç³»ç»ÿï¼ç™»å½•æ—¶é—´ï¼š2017-12-13 07:59:07",
+      "username": "admin",
+      "menuname": "ç™»å½•ottç³»ç»ÿ"
+    },
+    {
+      "logid": 2666,
+      "createdate": "2017/12/12 20:16:57",
+      "logcontext": "ç¼–è¾‘äº†ä¸€ä¸ª  å½±ç‰‡é£žæ ¼",
+      "username": "admin",
+      "menuname": "ç‰‡æºé£žæ ¼æ¨¡å— "
+    },
+    {
+      "logid": 2665,
+      "createdate": "2017/12/12 20:16:39",
+      "logcontext": "ç¼–è¾‘äº†ä¸€ä¸ª  å½±ç‰‡é£žæ ¼",
+      "username": "admin",
+      "menuname": "ç‰‡æºé£žæ ¼æ¨¡å— "
+    },
+    {
+      "logid": 2664,
+      "createdate": "2017/12/12 20:16:25",
+      "logcontext": "ç”¨æˆ·adminæˆåšÿç™»å½•ottç³»ç»ÿï¼ç™»å½•æ—¶é—´ï¼š2017-12-12 20:16:25",
+      "username": "admin",
+      "menuname": "ç™»å½•ottç³»ç»ÿ"
+    },
+    {
+      "logid": 2663,
+      "createdate": "2017/12/12 19:06:35",
+      "logcontext": "ç”¨æˆ·adminæˆåšÿç™»å½•ottç³»ç»ÿï¼ç™»å½•æ—¶é—´ï¼š2017-12-12 19:06:35",
+      "username": "admin",
+      "menuname": "ç™»å½•ottç³»ç»ÿ"
+    },
+    {
+      "logid": 2662,
+      "createdate": "2017/12/12 18:40:03",
+      "logcontext": "ç”¨æˆ·adminæˆåšÿç™»å½•ottç³»ç»ÿï¼ç™»å½•æ—¶é—´ï¼š2017-12-12 18:40:03",
+      "username": "admin",
+      "menuname": "ç™»å½•ottç³»ç»ÿ"
+    },
+    {
+      "logid": 2661,
+      "createdate": "2017/12/12 16:38:06",
+      "logcontext": "ç”¨æˆ·adminæˆåšÿç™»å½•ottç³»ç»ÿï¼ç™»å½•æ—¶é—´ï¼š2017-12-12 16:38:06",
+      "username": "admin",
+      "menuname": "ç™»å½•ottç³»ç»ÿ"
+    },
+    {
+      "logid": 2660,
+      "createdate": "2017/12/12 16:04:01",
+      "logcontext": "ç”¨æˆ·adminæˆåšÿç™»å½•ottç³»ç»ÿï¼ç™»å½•æ—¶é—´ï¼š2017-12-12 16:04:01",
+      "username": "admin",
+      "menuname": "ç™»å½•ottç³»ç»ÿ"
+    },
+    {
+      "logid": 2659,
+      "createdate": "2017/12/12 15:58:33",
+      "logcontext": "å®¡æ ¸äº†ä¸€ä¸ªé¢‘é“çš„èš‚ç›®",
+      "username": "admin",
+      "menuname": "ç›´æ’­é¢‘é“æ¨¡å—"
+    },
+    {
+      "logid": 2658,
+      "createdate": "2017/12/12 15:58:33",
+      "logcontext": "å®¡æ ¸äº†ä¸€ä¸ªé¢‘é“çš„èš‚ç›®",
+      "username": "admin",
+      "menuname": "ç›´æ’­é¢‘é“æ¨¡å—"
+    },
+    {
+      "logid": 2657,
+      "createdate": "2017/12/12 15:58:33",
+      "logcontext": "å®¡æ ¸äº†ä¸€ä¸ªé¢‘é“çš„èš‚ç›®",
+      "username": "admin",
+      "menuname": "ç›´æ’­é¢‘é“æ¨¡å—"
+    },
+    {
+      "logid": 2656,
+      "createdate": "2017/12/12 15:58:32",
+      "logcontext": "å®¡æ ¸äº†ä¸€ä¸ªé¢‘é“çš„èš‚ç›®",
+      "username": "admin",
+      "menuname": "ç›´æ’­é¢‘é“æ¨¡å—"
+    },
+    {
+      "logid": 2655,
+      "createdate": "2017/12/12 15:58:32",
+      "logcontext": "å®¡æ ¸äº†ä¸€ä¸ªé¢‘é“çš„èš‚ç›®",
+      "username": "admin",
+      "menuname": "ç›´æ’­é¢‘é“æ¨¡å—"
+    },
+    {
+      "logid": 2654,
+      "createdate": "2017/12/12 15:58:29",
+      "logcontext": "å®¡æ ¸äº†ä¸€ä¸ªé¢‘é“çš„èš‚ç›®",
+      "username": "admin",
+      "menuname": "ç›´æ’­é¢‘é“æ¨¡å—"
+    },
+    {
+      "logid": 2653,
+      "createdate": "2017/12/12 15:58:22",
+      "logcontext": "å®¡æ ¸äº†ä¸€ä¸ªé¢‘é“çš„èš‚ç›®",
+      "username": "admin",
+      "menuname": "ç›´æ’­é¢‘é“æ¨¡å—"
+    },
+    {
+      "logid": 2652,
+      "createdate": "2017/12/12 15:57:31",
+      "logcontext": "ç”¨æˆ·adminæˆåšÿç™»å½•ottç³»ç»ÿï¼ç™»å½•æ—¶é—´ï¼š2017-12-12 15:57:31",
+      "username": "admin",
+      "menuname": "ç™»å½•ottç³»ç»ÿ"
+    },
+    {
+      "logid": 2651,
+      "createdate": "2017/12/12 15:19:16",
+      "logcontext": "ç”¨æˆ·adminæˆåšÿç™»å½•ottç³»ç»ÿï¼ç™»å½•æ—¶é—´ï¼š2017-12-12 15:19:16",
+      "username": "admin",
+      "menuname": "ç™»å½•ottç³»ç»ÿ"
+    },
+    {
+      "logid": 2650,
+      "createdate": "2017/12/12 15:15:19",
+      "logcontext": "åˆ é™¤äº†ä¸€ä¸ª  æ–‡ä»¶",
+      "username": "admin",
+      "menuname": "åª’èµ„æ–‡ä»¶ç®¡ç†æ¨¡å— "
+    }
+  ]
+}

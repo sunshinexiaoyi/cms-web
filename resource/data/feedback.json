@@ -1,0 +1,35 @@
+{
+  "code": "200",
+  "mString": "success",
+  "count": 57,
+  "listData": [
+    {
+      "id": 1,
+      "clientcode": "boss00012",
+      "clientname": "孙悟空",
+      "content": "aaã¥â…â¨ã§ââƒã¥â…â¨ã§ââƒ",
+      "feedbacktime": "2017-03-01"
+    },
+    {
+      "id": 2,
+      "clientcode": "boss00012",
+      "clientname": "猪八戒",
+      "content": "ã¥â‘âœã¥â‘âœã¥â‘âœã¥â‘âœã¥â‘âœã¥â‘âœã¥â‘âœ",
+      "feedbacktime": "2017-03-01"
+    },
+    {
+      "id": 3,
+      "clientcode": "boss00012",
+      "clientname": "小白龙",
+      "content": "hhhhhhhhhhhhhh",
+      "feedbacktime": "2017-03-01"
+    },
+    {
+      "id": 4,
+      "clientcode": "boss00012",
+      "clientname": "玉帝",
+      "content": "aaå•šå•šå•šå•š",
+      "feedbacktime": "2017-03-02"
+    }
+  ]
+}

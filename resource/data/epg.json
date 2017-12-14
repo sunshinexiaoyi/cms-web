@@ -1,0 +1,22 @@
+{
+  "code": "200",
+  "mString": "success",
+  "count": 2,
+  "listData": [
+    {
+      "epgname": "epg1",
+      "programdate": "日期",
+      "week": "星期一",
+      "duration": "13",
+      "playtime": "1314",
+      "examinestate": "1"
+    },{
+      "epgname": "epg2",
+      "programdate": "日期",
+      "week": "星期一",
+      "duration": "13",
+      "playtime": "1314",
+      "examinestate": "0"
+    }
+  ]
+}

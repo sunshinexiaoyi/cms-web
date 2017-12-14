@@ -1,0 +1,43 @@
+{
+  "code": "200",
+  "mString": "success",
+  "count": 1,
+  "listData": [
+    {
+      "endtime": "19:00",
+      "starttime": "01:00",
+      "adShowTime": 0,
+      "adId": 14,
+      "adScrollTimes": 1000,
+      "adContent": "æˆ‘ä¸€ç›´åœ¨æ»š(0.0)",
+      "type": 1
+    },
+    {
+      "endtime": "19:49",
+      "starttime": "00:49",
+      "adShowTime": 0,
+      "adId": 13,
+      "adScrollTimes": 3,
+      "adContent": "æˆ‘è¦æ»šä¸‰æ¬¡ï¼",
+      "type": 1
+    },
+    {
+      "endtime": "21:48",
+      "starttime": "02:06",
+      "adShowTime": 0,
+      "adId": 12,
+      "adScrollTimes": 1,
+      "adContent": "æˆ‘åªæ»šä¸€æ¬¡ã€‚ã€‚",
+      "type": 1
+    },
+    {
+      "endtime": "23:48",
+      "starttime": "01:00",
+      "adShowTime": 0,
+      "adId": 11,
+      "adScrollTimes": 2,
+      "adContent": "æˆ‘æ»šä¸¤æ¬¡ï¼Ÿ",
+      "type": 1
+    }
+  ]
+}
