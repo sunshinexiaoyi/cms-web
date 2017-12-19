@@ -5,62 +5,231 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>系统版本</title>
+    <title>版本管理</title>
     <link rel="stylesheet" href="../../../resource/plugins/layui/css/layui.css" media="all">
     <link rel="stylesheet" href="../../../resource/css/public.css" media="all">
     <link rel="stylesheet" href="../../../resource/css/app.css" media="all">
 </head>
 
 <body>
-<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-    <legend>版本更新记录</legend>
-</fieldset>
-<ul class="layui-timeline">
-    <li class="layui-timeline-item">
-        <i class="layui-icon layui-timeline-axis"></i>
-        <div class="layui-timeline-content layui-text">
-            <h3 class="layui-timeline-title">2017年10月23日</h3>
-            <p>
-                CMS开发准备
-               <i class="layui-icon"></i>
-            </p>
-            <ul>
-                <li>搭建运行环境，熟悉相关工具使用</li>
-                <li>了解OTT系统， 动手操作，从节目上传，分类到播放，服务器IP设置等。</li>
-                <li>找好用的网页开发软件，如：Dreamweaver. 提高开发效率。</li>
-            </ul>
+    <!--表格工具栏 * 折叠面板-->
+    <div class="layui-collapse gos-table-operation " lay-filter="test">
+        <div class="layui-colla-item">
+            <h2 class="layui-colla-title layui-bg-cyan">表格操作</h2>
+            <div class="layui-colla-content layui-show layui-fluid">
+                <div class="layui-row layui-col-space3">
+                    <div class="layui-col-xs12 layui-col-sm6 layui-col-md7">
+                        <button class="layui-btn  layui-btn-normal" id="add">
+                            <i class="layui-icon">&#xe654;</i>添加
+                        </button>
+                        <button class="layui-btn layui-btn-danger" id="del">
+                            <i class="layui-icon">&#xe640;</i>删除
+                        </button>
+                        <button class="layui-btn layui-bg-cyan" id="time">
+                            <i class="layui-icon">&#xe705;</i>时间线
+                        </button>
+                        <button class="layui-btn layui-bg-cyan" id="refresh">
+                            <i class="layui-icon">&#x1002;</i>刷新
+                        </button>
+                    </div>
+
+                    <div class="layui-col-xs12 layui-col-sm6  layui-col-sm-offset6 layui-col-md2 layui-col-md-offset3" >
+                        <div  class="layui-row layui-col-space3">
+                            <div class="layui-col-xs6 layui-col-sm6">
+                                <div class="layui-input-inline" >
+                                    <input type="text" value="" placeholder="请输入关键字" class="layui-input search_input" id="queryInput">
+                                </div>
+                            </div>
+                            <div class="layui-col-xs6 layui-col-sm4">
+                                <button class="layui-btn" id="query">
+                                    <i class="layui-icon">&#xe615;</i>查询
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
         </div>
-    </li>
-    <li class="layui-timeline-item">
-        <i class="layui-icon layui-timeline-axis"></i>
-        <div class="layui-timeline-content layui-text">
-            <h3 class="layui-timeline-title">2017年11月21日</h3>
-            <p>内容管理</p>
-            <ul>
-                <li>完成片源样式管理</li>
-                <li>完成片源风格管理</li>
-                <li>完成点播节目管理</li>
-            </ul>
-        </div>
-    </li>
-    <li class="layui-timeline-item">
-        <i class="layui-icon layui-timeline-axis"></i>
-        <div class="layui-timeline-content layui-text">
-            <h3 class="layui-timeline-title">2017年12月5日</h3>
-            <p>系统管理</p>
-            <ul>
-                <li>完成用户管理</li>
-                <li>完成角色管理</li>
-                <li>完成日志管理</li>
-            </ul>
-        </div>
-    </li>
-    <li class="layui-timeline-item">
-        <i class="layui-icon layui-anim layui-anim-rotate layui-anim-loop layui-timeline-axis"></i>
-        <div class="layui-timeline-content layui-text">
-            <div class="layui-timeline-title">将来</div>
-        </div>
-    </li>
-</ul>
+    </div>
+
+    <div class="layui-form ">
+        <table  id="table" lay-filter="table"></table>
+    </div>
+
+
+
 </body>
+<script src="../../../resource/plugins/layui/layui.js"></script>
+
+<script type="text/html" id="type">
+    {{ d.type == "1" ? '直播' : '点播' }}
+</script>
+<!--表格行设置栏-->
+<script type="text/html" id="tabBar">
+    <div class="layui-tab-set">
+        <i class="layui-icon edit" title="编辑" lay-event="edit">&#xe642;</i>
+        <i class="layui-icon del"  title="删除" lay-event="del">&#xe640;</i>
+    </div>
+</script>
+
+<script>
+    layui.config({
+        base:'../../../resource/js/'
+    }).use(['table','ott','element'], function(){
+        var $ = layui.$;
+        var table = layui.table;
+        var element = layui.element;    //表格操作栏 必须
+
+        /*ott 信息 -- start*/
+        var ott = layui.ott;
+        var moduleName = ott.dict.constant.module.version;
+        var moduleInfo = ott.module.getInfo(moduleName);
+
+        var url = moduleInfo.url;
+        var dict = moduleInfo.dict;
+
+        var http = ott.http;
+        var tableSetting = ott.tableset;
+        var dialog = ott.dialog;
+        /*ott 信息 -- end*/
+
+        var tableIns = null;        //表格实列
+
+        var param ="";
+
+        init();
+
+        function init(){
+            initTable();
+            initTableSet();
+        }
+
+        function initTable(){
+            tableIns = table.render( $.extend({},tableSetting,  {
+                        elem: '#table'       //指定原始 table 容器的选择器或 DOM
+                        ,id: 'table'        //基础参数id
+                        ,url:url.list
+                        ,where:{
+                            param:param
+                        }
+                        ,cols: [[
+                             {type:"numbers",align:'center'}
+                            ,{type:"checkbox",align:'center'}//checkbox（复选框列）、space（空列）、numbers（序号列）
+                            ,{field:dict.auth.field, title:dict.auth.title, sort: true,align:'center'}
+                            ,{field:dict.ottVersionNo.field, title:dict.ottVersionNo.title, sort: true,align:'center'}
+                            ,{field:dict.apkVersionNo.field, title:dict.apkVersionNo.title, sort: true,align:'center'}
+                            ,{field:dict.updateTime.field, title:dict.updateTime.title, sort: true,align:'center'}
+
+                            ,{field:dict.set.field, title: dict.set.title,toolbar:'#tabBar',align:'center'}
+
+                        ]]
+                    }
+            ));
+
+            /*监听工具条*/
+            table.on('tool(table)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+                var data = obj.data; //获得当前行数据
+                var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+                var tr = obj.tr; //获得当前行 tr 的DOM对象
+               // console.info(data);
+                if(layEvent === 'del'){ //删除
+                    sendDel([data]);
+                } else if(layEvent === 'edit'){ //编辑
+                    dialog.openEdit(data.verId);
+                }
+            });
+        }
+
+        function updateTable(){
+            tableIns.reload({
+                where:{                
+                    param:param
+                }
+            });
+        }
+
+        /* 初始化表格*/
+        function initTableSet(){
+            $("#queryInput").on("change",function(){
+                param = $("#queryInput").val();
+                updateTable();
+            });
+
+            $("#query").on('click',function(){
+                tableIns.reload({
+                    url:url.list,
+                    where:{
+                        param:$("#queryInput").val()
+                    }
+                });
+            });
+
+            $("#add").on('click',function(){
+                dialog.openAdd();
+            });
+
+            $("#del").on('click',function(){
+                var checkStatus = table.checkStatus('table'); //table即为基础参数id对应的值
+                //console.info(checkStatus);
+                var delLen = checkStatus.data.length;
+                if(0 == delLen){//如果未选择
+                    layer.msg('尚未选择条目', {icon: 0,time:1000});//0警告 1 ok 2 错误
+                    return;
+                }
+                sendDel(checkStatus.data);
+
+            });
+            $("#time").on('click',function(){
+                layer.open({
+                    type: 2,
+                    area: ['80%', '80%'],
+                    fixed: false, //不固定
+                    maxmin: true,
+                    shadeClose: true,
+
+                    content: 'index-time-line.html'
+                });
+
+            });
+
+            $("#refresh").on('click',function(){
+                console.info("刷新表格");
+                updateTable();
+            });
+        }
+
+        /*发送删除*/
+        function sendDel(list){
+            layer.confirm('确认删除该'+list.length+'项吗？',function(index){
+                layer.close(index);
+                console.info("----发送删除列表-----");
+                var sendData = '';
+                for(var i=0;i<list.length;i++){
+                    sendData += list[i].verId+',';
+                }
+
+                sendData = sendData.substr(0,sendData.length-1);
+                console.info(list);
+                console.info(sendData);
+
+                http.post({
+                    url:url.del,
+                    data:{verIds:sendData},
+                    success:function(data){
+                        updateTable();
+                        layer.msg('删除成功', {icon: 1,time:1000});//0警告 1 ok 2 错误
+                    },
+                    fail:function(data){
+                        layer.msg('删除失败', {icon: 2,time:1000});//0警告 1 ok 2 错误
+
+                    }
+                });
+            });
+        }
+    });
+    
+</script>
+
 </html>

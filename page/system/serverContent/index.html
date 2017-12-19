@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>权限管理</title>
+    <title>内容服务器</title>
     <link rel="stylesheet" href="../../../resource/plugins/layui/css/layui.css" media="all">
     <link rel="stylesheet" href="../../../resource/css/public.css" media="all">
     <link rel="stylesheet" href="../../../resource/css/app.css" media="all">
@@ -44,17 +44,25 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
+
             </div>
         </div>
     </div>
+
     <div class="layui-form ">
         <table  id="table" lay-filter="table"></table>
     </div>
+
+
+
 </body>
 <script src="../../../resource/plugins/layui/layui.js"></script>
 
-
+<script type="text/html" id="type">
+    {{ d.type == "1" ? '直播' : '点播' }}
+</script>
 <!--表格行设置栏-->
 <script type="text/html" id="tabBar">
     <div class="layui-tab-set">
@@ -73,12 +81,11 @@
 
         /*ott 信息 -- start*/
         var ott = layui.ott;
-        var moduleName = ott.dict.constant.module.user;//模块名
+        var moduleName = ott.dict.constant.module.serverContent;
         var moduleInfo = ott.module.getInfo(moduleName);
 
         var url = moduleInfo.url;
         var dict = moduleInfo.dict;
-        //console.info(dict);
 
         var http = ott.http;
         var tableSetting = ott.tableset;
@@ -107,13 +114,13 @@
                         ,cols: [[
                              {type:"numbers",align:'center'}
                             ,{type:"checkbox",align:'center'}//checkbox（复选框列）、space（空列）、numbers（序号列）
-                            ,{field:dict.userName.field, title:dict.userName.title, sort: true,align:'center'}
-                            ,{field:dict.reaName.field, title:dict.reaName.title, sort: true,align:'center'}
-                            ,{field:dict.phone.field, title:dict.phone.title, sort: true,align:'center'}
-                            ,{field:dict.email.field, title:dict.email.title, sort: true,align:'center'}
-                            ,{field:dict.createTime.field, title:dict.createTime.title, sort: true,align:'center'}
-                            ,{field:dict.roleName.field, title:dict.roleName.title, sort: true,align:'center'}
+                            ,{field:dict.serverIP.field, title:dict.serverIP.title, sort: true,align:'center'}
+                            ,{field:dict.concurrency.field, title:dict.concurrency.title, sort: true,align:'center'}
+                            ,{field:dict.maxinsertNumber.field, title:dict.maxinsertNumber.title, sort: true,align:'center'}
+                            ,{field:dict.MediaInstallPath.field, title:dict.MediaInstallPath.title, sort: true,align:'center'}
+
                             ,{field:dict.set.field, title: dict.set.title,toolbar:'#tabBar',align:'center'}
+
                         ]]
                     }
             ));
@@ -123,11 +130,11 @@
                 var data = obj.data; //获得当前行数据
                 var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
                 var tr = obj.tr; //获得当前行 tr 的DOM对象
-               console.info(data);
+               // console.info(data);
                 if(layEvent === 'del'){ //删除
                     sendDel([data]);
                 } else if(layEvent === 'edit'){ //编辑
-                    dialog.openEdit(data.uid);
+                    dialog.openEdit(data.verId);
                 }
             });
         }
@@ -171,6 +178,18 @@
                 sendDel(checkStatus.data);
 
             });
+            $("#time").on('click',function(){
+                layer.open({
+                    type: 2,
+                    area: ['80%', '80%'],
+                    fixed: false, //不固定
+                    maxmin: true,
+                    shadeClose: true,
+
+                    content: 'index-time-line.html'
+                });
+
+            });
 
             $("#refresh").on('click',function(){
                 console.info("刷新表格");
@@ -185,7 +204,7 @@
                 console.info("----发送删除列表-----");
                 var sendData = '';
                 for(var i=0;i<list.length;i++){
-                    sendData += list[i].uid+',';
+                    sendData += list[i].verId+',';
                 }
 
                 sendData = sendData.substr(0,sendData.length-1);
@@ -194,7 +213,7 @@
 
                 http.post({
                     url:url.del,
-                    data:{userIds:sendData},
+                    data:{verIds:sendData},
                     success:function(data){
                         updateTable();
                         layer.msg('删除成功', {icon: 1,time:1000});//0警告 1 ok 2 错误

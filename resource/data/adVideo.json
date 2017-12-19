@@ -4,12 +4,12 @@
   "count": 1,
   "listData": [
     {
-      "adId": 1,
+      "adid": 1,
       "url": "http://192.168.120.21:8080/upload/game.html",
-      "adUrl": "http://192.168.120.21:8080/upload/1.jpg",
-      "adName": "视频广告",
-      "playDate": "2017",
-      "validDays": "2017-8-10",
+      "adurl": "http://192.168.120.21:8080/upload/1.jpg",
+      "adname": "视频广告",
+      "playdate": "2017",
+      "validdays": "2017-8-10",
       "status": "1"
     }
   ]

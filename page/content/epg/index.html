@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet"  href="../../../resource/plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet"  href="../../../resource/css/ztree/metro/ztree.css" media="all">
+</head>
+
+<body>
+<div class="layui-container">
+    <ul id="ztree" class="ztree"></ul>
+</div>
+
+<script src="../../../resource/plugins/layui/layui.js" charset="utf-8"></script>
+
+<script>
+    layui.config({
+        base:'../../../resource/js/'
+    }).use(['table','ott','element','ztree'], function(){
+        var $ = layui.$;
+        var tree = $("#ztree");
+        var ztree = layui.ztree;
+        var setting = {
+            view: {
+                dblClickExpand: false,
+                showLine: false,
+                selectedMulti: false
+            },
+            callback: {
+                beforeExpand:function(treeId, treeNode){
+                    console.log("beforeExpand");
+                    setting.getNodeData(treeNode,false);
+                },
+                beforeClick: function(treeId, treeNode) {
+                    console.log("beforeClick");
+                    if (treeNode.isParent) {//如果是父节点
+                        setting.getNodeData(treeNode,true);
+                    } else {    //子节点
+                        //updateMovieIframe(treeNode.cid,treeNode.classId);
+                        return true;
+                    }
+                }
+
+            },
+            getNodeData:function(treeNode,expand){
+                var zTree = $.fn.zTree.getZTreeObj("ztree");
+                if((null == treeNode.children)||(0 == treeNode.children.length)){//如果不存在子节点
+                    getMovieClassList(treeNode.cid,function(moveList){
+                        zTree.addNodes(treeNode,moveList,true);
+                    });
+                }
+                if(expand){
+                    zTree.expandNode(treeNode);
+                }
+                return true;
+            }
+        };
+        getMovieCategoryList();
+
+
+        /*获取电影分类总列表*/
+        function getMovieCategoryList(){
+
+                var test_movieCategoryList = [
+                    new MOVIE_CATEGORY(1,"Movice"),
+                    new MOVIE_CATEGORY(2,"Series"),
+                    new MOVIE_CATEGORY(3,"Cartoon"),
+                    new MOVIE_CATEGORY(4,"Variety"),
+                    new MOVIE_CATEGORY(5,"Mv")
+                ];
+                for(var i=0;i<test_movieCategoryList.length;i++){
+                    test_movieCategoryList[i].isParent = true;
+                    test_movieCategoryList[i].name = test_movieCategoryList[i].categoryName;
+                }
+                tree = $.fn.zTree.init(tree, setting, test_movieCategoryList);
+
+        }
+
+        /*获取节目分类列表*/
+        function getMovieClassList(categoryId,callback){
+
+                var test_MovieClassList = [
+                    [
+                        new MOVIE_CLASS(10,"动作",1),
+                        new MOVIE_CLASS(10,"喜剧",1),
+                        new MOVIE_CLASS(10,"卡通",1),
+                        new MOVIE_CLASS(10,"动作",1)
+                    ],
+                    [
+                        new MOVIE_CLASS(10,"爱情",1),
+                        new MOVIE_CLASS(10,"童话",1),
+                        new MOVIE_CLASS(10,"文艺",1),
+                        new MOVIE_CLASS(10,"动作",1)
+                    ]
+                ];
+
+                if((categoryId-1)>=test_MovieClassList.length){
+                    return;
+                }
+                for(var i=0;i< test_MovieClassList[categoryId].length;i++){
+                    test_MovieClassList[categoryId][i].name = test_MovieClassList[categoryId][i].className;
+                }
+                console.log(test_MovieClassList[categoryId]);
+                callback(test_MovieClassList[categoryId]);
+
+        }
+
+
+        /*影片分类信息表*/
+        function MOVIE_CATEGORY(cid,categoryName){
+            this.cid = cid;                     // BIGINT(11) UNSIGNED	非空	主键	由系统生成。
+            this.categoryName = categoryName;   // VARCHAR(255)	非空		分类名称
+            this.type = 1;	                    // int(11)	非空		视屏类型：1:直播 2：点播 3：其他
+        }
+
+        /*影片类型表*/
+        function MOVIE_CLASS(classId,className,cid){
+            this.classId	 = classId ;    // BIGINT(11) UNSIGNED	非空	主键	系统生成
+            this.className = className ;    // VARCHAR(255)	非空		类型名称
+            this.cid = cid;                 // bigint(11)	非空	外键ott_ movieCategory的id	分类ID
+            this.isLock = 0;                // int(11)	非空		（系统级）是否加锁：0表示不加锁、1表示加锁
+        }
+    });
+</script>
+</body>
+</html>

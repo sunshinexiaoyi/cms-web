@@ -24,12 +24,14 @@ layui.define('jquery',function(exports){
                 fail:function(){}
             },
             post:function(options){         //post 请求
+                console.info(options);
                 var config = $.extend({},this.postConfig,options);
                 $.post({
                     url:config.url,
                     dataType:config.dataType,
                     data:config.data,
                     success:function(data){
+                        //console.info(data);
                         if('success' ===  data.mString){
                             config.success(data);
                         }else {

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet"  href="../../../resource/plugins/layui/css/layui.css" media="all">
+</head>
+
+<body>
+<div class="layui-container">
+    <form  class="layui-form" action=""  enctype="multipart/form-data" style="padding-top: 10px">
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span style="color: red">*</span>广告类型：</label>
+            <div class="layui-input-block">
+                <select id="type" name="type" lay-filter="type" lay-verify="required">
+                    <option value="" >请选择广告类型</option>
+                    <option value="1" >图片广告</option>
+                    <option value="2" >滚动字幕</option>
+                    <option value="3" selected>视频</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="common" style="display: none">
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span style="color: red">*</span>广告名称：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="adname" lay-verify="" placeholder="" autocomplete="off" class="layui-input" value="">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span style="color: red">*</span>资源url：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="adurl" lay-verify="" placeholder="" autocomplete="off" class="layui-input" value="">
+                </div>
+            </div>
+        </div>
+
+        <div id="picture" style="display: none">
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span style="color: red">*</span>页面url：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="url" lay-verify="" placeholder="" autocomplete="off" class="layui-input" value="">
+                </div>
+            </div>
+        </div>
+
+        <div id="subtitle" style="display: none">
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">字幕内容：</label>
+                <div class="layui-input-block">
+                    <textarea placeholder="请输入内容" name="adcontent" class="layui-textarea"></textarea>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span style="color: red">*</span>滚动时间：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="adscrolltimes" lay-verify="" placeholder="" autocomplete="off" class="layui-input" value="">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span style="color: red">*</span>开始时间：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="starttime" lay-verify="" placeholder="" autocomplete="off" class="layui-input" value="">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span style="color: red">*</span>间隔时间：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="intervaltime" lay-verify="" placeholder="" autocomplete="off" class="layui-input" value="">
+                </div>
+            </div>
+        </div>
+
+        <div id="video" style="display: none">
+            <div class="layui-form-item">
+                <label class="layui-form-label">播放日期：</label>
+                <div class="layui-input-block">
+                    <input type="text" id="playdate" name="playdate"  placeholder=""  class="layui-input" value="">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span style="color: red">*</span>插播方式：</label>
+                <div class="layui-input-block">
+                    <select name="playtype" lay-filter="" lay-verify="required">
+                        <option value="" >请选择插播方式</option>
+                        <option value="0" >开始位置</option>
+                        <option value="1" >中间位置</option>
+                        <option value="2" >结束位置</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span style="color: red">*</span>有效期：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="size" lay-verify="number" placeholder="单位：天" autocomplete="off" class="layui-input" value="">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span style="color: red">*</span>服务器IP：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="serverip" lay-verify="number" placeholder="" autocomplete="off" class="layui-input" value="">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span style="color: red">*</span>播放状态：</label>
+                <div class="layui-input-block">
+                    <select name="status" lay-filter="" lay-verify="required">
+                        <option value=""  >请选择播放状态</option>
+                        <option value="0" >播放中</option>
+                        <option value="1" >停止</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <button class="layui-btn layui-input-block" lay-submit="" >提交</button>
+        </div>
+    </form>
+</div>
+
+<script src="../../../resource/plugins/layui/layui.js" charset="utf-8"></script>
+
+<script>
+    layui.config({
+        base:'../../../resource/js/'
+    }).use(['ott','form', 'layedit', 'jquery', 'laydate'], function() {
+        var form = layui.form;
+        var layer = layui.layer;
+        var $ = layui.jquery;
+        var laydate = layui.laydate;
+
+        /*ott 信息 -- start*/
+        var ott = layui.ott;
+        var moduleName = ott.dict.constant.module.version;
+        var moduleInfo = ott.module.getInfo(moduleName);
+        var url = moduleInfo.url;
+        var http = ott.http;
+        var dialog = ott.dialog;
+
+        var utils= ott.myutils;
+        var submitUrl = '';     //表单提交地址
+        var updateType = ott.dict.constant.updateType;
+        var type ;          //类型
+        /*ott 信息 -- end*/
+
+        var id = -1;
+
+        init();
+
+        function init(){
+            initForm();
+            initPageLang();
+            initParam();
+        }
+
+        /*初始化参数*/
+        function initParam(){
+            type = utils.getUpdateType();
+            console.info("更新类型:"+type);
+            if(type === updateType.add){
+                submitUrl = url.add;
+            }else if(type === updateType.edit){
+
+                id = utils.getId();
+                console.info("#id:"+id);
+
+                submitUrl = url.edit;
+                http.post({
+                    url:url.load,
+                    data:{categoryId:id},
+                    success:function(data){
+                        utils.setValue(data.object);
+                        form.render(); //更新全部
+                    }
+                })
+            }
+        }
+
+        /*初始化语言*/
+        function initPageLang(){
+
+        }
+
+        /*初始化表单*/
+        function initForm() {
+            switch_type($("#type").val());
+
+            //判断广告类型1 图片 2 流动字幕 3 视频
+            function switch_type(date){
+                switch (date){
+                    case '1':
+                        show("#common,#picture");
+                        hidden("#subtitle,#video");
+                        break;
+                    case '2':
+                        show("#subtitle");
+                        hidden("#picture,#video,#common");
+                        break;
+                    case '3':
+                        show("#common,#video");
+                        hidden("#picture,#subtitle");
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            //显示
+            function show(id){
+                var ids = id.split(",");
+                console.info(ids);
+                for(var i = 0; i < ids.length; i++){
+                    if($(ids[i]).attr("style") !== undefined){
+                        $(ids[i]).removeAttr("style");
+                    }
+                }
+            }
+
+            //隐藏
+            function hidden(id){
+                var ids = id.split(",");
+                console.info(ids);
+                for(var i = 0; i < ids.length; i++){
+                    if($(ids[i]).attr("style") === undefined) {
+                        $(ids[i]).attr("style", "display: none");
+                    }
+                }
+            }
+
+
+            //操作时间
+            laydate.render({
+                elem: '#playdate'
+            });
+
+
+            //表单验证
+            form.verify({});
+
+            //监听广告类型下拉框
+            form.on('select(type)', function(data){
+                //判断广告类型1 图片 2 流动字幕 3 视频
+                switch_type(data.value);
+            });
+
+
+            //监听提交
+            form.on('submit', function(data){
+                http.submit({
+                    url:submitUrl,    //添加样式
+                    elem:'.layui-form',
+                    success:function(data){
+                        parent.layer.msg('提交成功', {icon: 1,time:1000});//0警告 1 ok 2 错误
+                        dialog.closeAndRefresh();
+                    },
+                    fail:function(data){
+                        layer.msg('提交失败', {icon: 2,time:1000});//0警告 1 ok 2 错误
+                    }
+                });
+                return false;
+            });
+        }
+    });
+
+</script>
+</body>
+</html>

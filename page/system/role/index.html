@@ -88,7 +88,7 @@
 
         var http = ott.http;
         var tableSetting = ott.tableset;
-        var window = ott.window;
+        var dialog = ott.dialog;
         /*ott 信息 -- end*/
 
         var tableIns = null;        //表格实列
@@ -130,7 +130,7 @@
                     sendDel([data]);
                 } else if(layEvent === 'edit'){ //编辑
 
-                    window.openEdit(data.uid);
+                    dialog.openEdit(data.uid);
                 }
             });
         }
@@ -160,7 +160,7 @@
             });
 
             $("#add").on('click',function(){
-                window.openAdd();
+                dialog.openAdd();
             });
 
             $("#del").on('click',function(){

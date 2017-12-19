@@ -1,0 +1,17 @@
+{
+  "code": "200",
+  "mString": "success",
+  "count": 2,
+  "listData": [
+    {
+      "mediainstallpath": "/home/ottraid/content",
+      "ftppassword": "123456",
+      "concurrency": 1000,
+      "serverid": 1,
+      "ftpusername": "gospell",
+      "maxinsertnumber": 1000,
+      "serverip": "192.168.120.21",
+      "ftpport": 21
+    }
+  ]
+}

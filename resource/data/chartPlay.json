@@ -1,0 +1,97 @@
+{
+  "code": "200",
+  "mString": "success",
+  "count": 2,
+  "listData": [
+    {
+      "movieName": "cctv1",
+      "movieId": 943,
+      "playCount": 13,
+      "durationTime": 59.0
+    },
+    {
+      "movieName": "cctv2",
+      "movieId": 946,
+      "playCount": 14,
+      "durationTime": 1.0
+    },
+    {
+      "movieName": "cctv3",
+      "movieId": 945,
+      "playCount": 3,
+      "durationTime": 3.0
+    },
+    {
+      "movieName": "hhh",
+      "movieId": 934,
+      "playCount": 21,
+      "durationTime": 0.0
+    },
+    {
+      "movieName": "cctv4",
+      "movieId": 928,
+      "playCount": 22,
+      "durationTime": 0.0
+    },
+    {
+      "movieName": "cctv5",
+      "movieId": 129,
+      "playCount": 1,
+      "durationTime": 1.0
+    },
+    {
+      "movieName": "cctv6",
+      "movieId": 958,
+      "playCount": 10,
+      "durationTime": 0.0
+    },
+    {
+      "movieName": "cctv27",
+      "movieId": 953,
+      "playCount": 11,
+      "durationTime": 119.0
+    },
+    {
+      "movieName": "cctv28",
+      "movieId": 950,
+      "playCount": 31,
+      "durationTime": 1.0
+    },
+    {
+      "movieName": "cctv29",
+      "movieId": 456,
+      "playCount": 21,
+      "durationTime": 62.0
+    },
+    {
+      "movieName": "Aloft",
+      "movieId": 196,
+      "playCount": 21,
+      "durationTime": 0.0
+    },
+    {
+      "movieName": "cctv30",
+      "movieId": 959,
+      "playCount": 10,
+      "durationTime": 56.0
+    },
+    {
+      "movieName": "cctv31",
+      "movieId": 944,
+      "playCount": 10,
+      "durationTime": 10.0
+    },
+    {
+      "movieName": "dsdadsad",
+      "movieId": 957,
+      "playCount": 1,
+      "durationTime": 201.0
+    },
+    {
+      "movieName": "cctv33",
+      "movieId": 936,
+      "playCount": 10,
+      "durationTime": 30.0
+    }
+  ]
+}

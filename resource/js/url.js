@@ -51,7 +51,7 @@ layui.define("dict", function(exports) {
         url[module.epg] = {
             list : path+'epg.json', 	// 剧集列表     参数：movieId
             add : path+'epg.json', 				// 添加剧集信息    参数：剧集对象episode
-            load : path+'epg.json',		// 加载剧集信息
+            load : path+'loadEpg.json',		// 加载剧集信息
             edit : path+'epg.json',			// 编辑剧集信息    参数：剧集对象episode
             del : path+'epg.json' 				// 删除影片    参数：episodeIds
         };
@@ -89,7 +89,7 @@ layui.define("dict", function(exports) {
         url[module.version] = {
             list : path+'version.json', // 视频源列表     参数：movieId
             add : path+'version.json', 				// 添加视屏源信息    参数：对象
-            load : path+'version.json',		// 加载视屏源信息    参数：urlId
+            load : path+'loadVersion.json',		// 加载视屏源信息    参数：urlId
             edit : path+'version.json',			// 编辑视屏源信息    参数：对象
             del : path+'version.json' 			// 删除视屏源    参数：urlIds
         };
@@ -100,6 +100,15 @@ layui.define("dict", function(exports) {
             edit : path+'server.json',			// 编辑视屏源信息    参数：对象
             del : path+'server.json' 			// 删除视屏源    参数：urlIds
         };
+        url[module.serverContent] = {
+            list : path+'serverContent.json', // 视频源列表     参数：movieId
+            add : path+'serverContent.json', 				// 添加视屏源信息    参数：对象
+            load : path+'serverContent.json',		// 加载视屏源信息    参数：urlId
+            edit : path+'serverContent.json',			// 编辑视屏源信息    参数：对象
+            del : path+'serverContent.json' 			// 删除视屏源    参数：urlIds
+        };
+
+
 
         /*运营服务管理*/
         url[module.product ] = {
@@ -134,7 +143,7 @@ layui.define("dict", function(exports) {
         url[module.adVideo] = {
             list : path+'adVideo.json', // 视频源列表     参数：movieId
             add : path+'adVideo.json', 				// 添加视屏源信息    参数：对象
-            load : path+'adVideo.json',		// 加载视屏源信息    参数：urlId
+            load : path+'loadAdVideo.json',		// 加载视屏源信息    参数：urlId
             edit : path+'adVideo.json',			// 编辑视屏源信息    参数：对象
             del : path+'adVideo.json' 			// 删除视屏源    参数：urlIds
         };
@@ -155,17 +164,26 @@ layui.define("dict", function(exports) {
         url[module.update] = {
             list : path+'update.json', // 视频源列表     参数：movieId
             add : path+'update.json', 				// 添加视屏源信息    参数：对象
-            load : path+'update.json',		// 加载视屏源信息    参数：urlId
+            load : path+'loadUpdate.json',		// 加载视屏源信息    参数：urlId
             edit : path+'update.json',			// 编辑视屏源信息    参数：对象
             del : path+'update.json' 			// 删除视屏源    参数：urlIds
         };
         url[module.feedback] = {
             list : path+'feedback.json', // 视频源列表     参数：movieId
             add : path+'feedback.json', 				// 添加视屏源信息    参数：对象
-            load : path+'feedback.json',		// 加载视屏源信息    参数：urlId
+            load : path+'loadFeedback.json',		// 加载视屏源信息    参数：urlId
             edit : path+'feedback.json',			// 编辑视屏源信息    参数：对象
             del : path+'feedback.json' 			// 删除视屏源    参数：urlIds
         };
+
+        url[module.version] = {
+            list : path+'version.json', // 视频源列表     参数：movieId
+            add : path+'version.json', 				// 添加视屏源信息    参数：对象
+            load : path+'loadVersion.json',		// 加载视屏源信息    参数：urlId
+            edit : path+'version.json',			// 编辑视屏源信息    参数：对象
+            del : path+'version.json' 			// 删除视屏源    参数：urlIds
+        };
+
 		return url;
 
 	}

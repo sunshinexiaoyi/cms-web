@@ -38,7 +38,9 @@ layui.define(function(exports){
             user:'user',            //用户管理
             role:"role",            //角色管理
             version:'version',      //系统版本
-            server:'server',        //服务器组管理
+            server:'server',        //服务器管理
+            serverContent:'serverContent',        //内容服务器管理
+
 
             /*运营服务管理*/
             product:'product' ,          //产品服务管理
@@ -210,29 +212,58 @@ layui.define(function(exports){
 
         mod[constant.module.adPict] = {
             /*表格*/
-            adName: new MODULE_ITEM('adName', '广告名称','adName'),
-            adUrl: new MODULE_ITEM('adUrl', '图片地址','adUrl'),
+            adName: new MODULE_ITEM('adname', '广告名称','adName'),
+            adUrl: new MODULE_ITEM('adurl', '图片地址','adUrl'),
             url: new MODULE_ITEM('url', '链接地址','url'),
             set:set
         };
 
         mod[constant.module.adText] = {
             /*表格*/
-            adContent: new MODULE_ITEM('adContent', '内容','adContent'),
-            adScrollTimes: new MODULE_ITEM('adScrollTimes', '滚动时长','adScrollTimes'),
-            startTime: new MODULE_ITEM('startTime', '开始时间','startTime'),
-            intervalTime: new MODULE_ITEM('intervalTime', '间隔时长','intervalTime'),//间隔时间（单位：分钟）
+            adContent: new MODULE_ITEM('adcontent', '内容','adContent'),
+            adScrollTimes: new MODULE_ITEM('adscrolltimes', '滚动时长','adScrollTimes'),
+            startTime: new MODULE_ITEM('starttime', '开始时间','startTime'),
+            intervalTime: new MODULE_ITEM('intervaltime', '间隔时长','intervalTime'),//间隔时间（单位：分钟）
             set:set
         };
 
         mod[constant.module.adVideo] = {
             /*表格*/
-            adName: new MODULE_ITEM('adName', '广告名称','adName'),
-            adUrl: new MODULE_ITEM('adUrl', '视频地址','adUrl'),
-            playDate: new MODULE_ITEM('playDate', '播放日期','playDate'),
-            playType: new MODULE_ITEM('playType', '插播方式','playType'),//插播方式：0开始位置、1中间位置、2结束位置
-            validDays: new MODULE_ITEM('validDays', '有效期','validDays'),//有效期（单位：天）
+            adName: new MODULE_ITEM('adname', '广告名称','adName'),
+            adUrl: new MODULE_ITEM('adurl', '视频地址','adUrl'),
+            playDate: new MODULE_ITEM('playdate', '播放日期','playDate'),
+            playType: new MODULE_ITEM('playtype', '插播方式','playType'),//插播方式：0开始位置、1中间位置、2结束位置
+            validDays: new MODULE_ITEM('validdays', '有效期','validDays'),//有效期（单位：天）
             status: new MODULE_ITEM('status', '状态','status'),//状态：0停播、1在播放
+
+            set:set
+        };
+
+        mod[constant.module.version] = {
+            /*表格*/
+            auth: new MODULE_ITEM('auth', '操作员','auth'),
+            ottVersionNo: new MODULE_ITEM('ottversionno', 'OTT版本号 ','ottversionno'),
+            apkVersionNo: new MODULE_ITEM('apkversionno', 'APK版本号','apkversionno'),
+            
+            updateTime: new MODULE_ITEM('updatetime', '操作时间 ','updateTime'),
+            updateType: new MODULE_ITEM('updatetype', '升级类型','updateType'),
+            dbFiles: new MODULE_ITEM('dbfiles', '数据库文件','dbfiles'),
+            isEffect: new MODULE_ITEM('iseffect', '是否影响历史版本','isEffect'),
+            remark: new MODULE_ITEM('remark', '备注','remark'),
+
+            set:set
+        };
+
+        mod[constant.module.serverContent] = {
+            /*表格*/
+            MediaInstallPath: new MODULE_ITEM('mediainstallpath', '资源路径','MediaInstallPath'),
+            concurrency: new MODULE_ITEM('concurrency', '服务器并发量（个）','concurrency'),
+            ftpPassword: new MODULE_ITEM('ftppassword', '操作员','ftpPassword'),
+            ftpUserName: new MODULE_ITEM('ftpusername', '操作员','ftpUserName'),
+            ftpport: new MODULE_ITEM('ftpport', '操作员','ftpport'),
+            maxinsertNumber: new MODULE_ITEM('maxinsertnumber', '最大直播流数量（个）','maxinsertNumber'),
+            serverIP: new MODULE_ITEM('serverip', 'FTP服务器IP ','serverIP'),
+            auth: new MODULE_ITEM('auth', '操作员','auth'),
 
             set:set
         };

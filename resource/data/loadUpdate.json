@@ -1,0 +1,26 @@
+{
+  "code": "200",
+  "mString": "success",
+  "object":  {
+    "versionid": 5,
+    "versioncode": 84,
+    "versionname": "2.2.0.8",
+    "updatetype": null,
+    "size": "33456337",
+    "url": "http://192.168.120.21:8080/software/gospell_stb_ott_2.2.0.8.84.apk",
+    "protocol": 1,
+    "type": 3,
+    "content": "",
+    "filename": "gospell_stb_ott_2.2.0.8.84.apk",
+    "apptype": 1,
+    "otid": "",
+    "mdf": "7202000b266cc9935d5ad445898a7e55",
+    "serialnobegin": "",
+    "serialnoend": "",
+    "updatetypes": "æ‰‹åš¨å‡çº§",
+    "apptypes": "é¡¶ç›’appå‡çº§",
+    "serialno": null,
+    "types": null,
+    "protocols": null
+  }
+}

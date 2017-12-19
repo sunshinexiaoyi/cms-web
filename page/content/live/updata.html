@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>直播</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet"  href="../../../resource/plugins/layui/css/layui.css" media="all">
+</head>
+
+<body>
+<div class="layui-container">
+    <form  class="layui-form" action=""  enctype="multipart/form-data" style="padding-top: 10px">
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span style="color: red">*</span>影片名称：</label>
+            <div class="layui-input-block">
+                <input type="text" name="channelName" lay-verify="required" placeholder="频道名称" autocomplete="off" class="layui-input" value="">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">节目编号：</label>
+            <div class="layui-input-block">
+                <input type="text" name="serviceId" lay-verify="" placeholder="节目编号" autocomplete="off" class="layui-input" value="">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label"><span style="color: red">*</span>是否直播：</label>
+                <div class="layui-input-inline">
+                    <input type="checkbox"  value="0" lay-skin="switch" lay-filter="switchTest" lay-text="是|否">
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label"><span style="color: red">*</span>是否回看：</label>
+                <div class="layui-input-inline">
+                    <input type="checkbox"  value="0" name="isReplay" lay-skin="switch" lay-filter="switchTest" lay-text="是|否">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label"><span style="color: red">*</span>是否付费：</label>
+                <div class="layui-input-inline">
+                    <input type="checkbox" value="0" name="isPay" lay-skin="switch" lay-filter="switchTest" lay-text="是|否">
+                </div>
+            </div>
+
+            <div class="layui-inline" style="display: none">
+                <label class="layui-form-label"><span style="color: red">*</span>参考价格：</label>
+                <div class="layui-input-block"  style="width: 50%">
+                    <input type="text" id="referencePrice"  name="referencePrice"  placeholder="单位：￥" autocomplete="off" class="layui-input" value="">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label"><span style="color: red">*</span>是否时移：</label>
+                    <div class="layui-input-inline">
+                        <input type="checkbox" value="0" id="isShift" name="isShift" lay-skin="switch" lay-filter="switchTest" lay-text="是|否">
+                    </div>
+                </div>
+
+                <div class="layui-inline" style="display: none">
+                    <label class="layui-form-label"><span style="color: red">*</span>时移时间：</label>
+                    <div class="layui-input-inline"  style="width: 50%">
+                        <input type="text" id="timeShift" name="timeShift"  placeholder="单位：分钟" autocomplete="off" class="layui-input" value="">
+                    </div>
+                </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label"><span style="color: red">*</span>节目信号：</label>
+                <div class="layui-input-inline">
+                    <select name="categoryid" lay-verify="required" lay-filter="categoryAdd" id="categorySelectAdd">
+                        <option value="">请选择片源样式</option>
+                        <option value="1">1</option>
+                        <option value="2">1</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label"><span style="color: red">*</span>输出类型：</label>
+                <div class="layui-input-inline">
+                    <select name="classid" lay-verify="required" lay-filter="clazzAdd" id="clazzSelectAdd">
+                        <option value="">请选择片源风格</option>
+                        <option value="1">1</option>
+                        <option value="2">1</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label"><span style="color: red">*</span>频道类型：</label>
+                <div class="layui-input-inline">
+                    <select name="typeId" lay-verify="required" lay-filter="categoryAdd" id="typeId">
+                        <option value="">请选择频道类型</option>
+                        <option value="1">1</option>
+                        <option value="2">1</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label"><span style="color: red">*</span>分辨率：</label>
+                <div class="layui-input-inline">
+                    <select name="streamCode" lay-verify="required" lay-filter="clazzAdd" id="streamCode">
+                        <option value="">请选择默认分辨率</option>
+                        <option value="1">SD</option>
+                        <option value="2">HD</option>
+                        <option value="3">2K</option>
+                        <option value="4">4K</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+
+            <div class="layui-inline">
+                <label class="layui-form-label"><span style="color: red">*</span>是否加锁：</label>
+                <div class="layui-input-inline">
+                    <input type="checkbox"  value="0" name="islock" lay-skin="switch" lay-filter="switchTest" lay-text="是|否">
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label"><span style="color: red">*</span>能否播放：</label>
+                <div class="layui-input-inline">
+                    <input type="checkbox"   value="0" name="isPlay" lay-skin="switch" lay-filter="switchTest" lay-text="是|否">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label"><span style="color: red">*</span>审核状态：</label>
+                <div class="layui-input-inline">
+                    <input type="checkbox"  value="0" name="examineState" lay-skin="switch" lay-filter="switchTest" lay-text="是|否">
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label"><span style="color: red">*</span>DRM加扰：</label>
+                <div class="layui-input-inline">
+                    <input type="checkbox"  value="0" name="drmState" lay-skin="switch" lay-filter="switchTest" lay-text="是|否">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label"><span style="color: red">*</span>多分辨率：</label>
+                <div class="layui-input-inline">
+                    <input type="checkbox"  value="0" name="isMultyBitrate" lay-skin="switch" lay-filter="switchTest" lay-text="是|否">
+                </div>
+            </div>
+
+            <div class="layui-inline" style="display: none">
+                <label class="layui-form-label"><span style="color: red">*</span>smil地址：</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="smilUrl" name="smilUrl" lay-verify="" placeholder="请输入多分辨率smil地址" autocomplete="off" class="layui-input" value="">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">频道IP：</label>
+            <div class="layui-input-block">
+                <input type="text" name="channelIp" lay-verify="ip" placeholder="如：192.168.1.1" autocomplete="off" class="layui-input" value="">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">频道端口：</label>
+            <div class="layui-input-block">
+                <input type="text" name="channelPort" lay-verify="port" placeholder="如：8888" autocomplete="off" class="layui-input" value="">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">流文件名：</label>
+            <div class="layui-input-block">
+                <input type="text" name="streamName" lay-verify="text" placeholder="" autocomplete="off" class="layui-input" value="">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">推送地址：</label>
+            <div class="layui-input-block">
+                <input type="text" name="outsideUrl" lay-verify="" placeholder="" autocomplete="off" class="layui-input" value="">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">频道URL：</label>
+            <div class="layui-input-block">
+                <input type="text" name="liveUrl" lay-verify="" placeholder="" autocomplete="off" class="layui-input" value="">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">供应商：</label>
+            <div class="layui-input-block">
+                <input type="text" name="provider" lay-verify="" placeholder="" autocomplete="off" class="layui-input" value="">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">LOGO：</label>
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn" id="test1">
+                    <i class="layui-icon">&#xe67c;</i>上传图片
+                </button>
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">频道描述：</label>
+            <div class="layui-input-block">
+                <textarea id="description" placeholder="请输入内容" class="layui-textarea"></textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <button class="layui-btn layui-input-block" lay-submit="" lay-filter="submit">提交</button>
+        </div>
+    </form>
+</div>
+
+<script src="../../../resource/plugins/layui/layui.js" charset="utf-8"></script>
+
+<script>
+    layui.config({
+        base:"../../../resource/js/"
+    }).use(['ott','form', 'layedit', 'laydate', 'upload', 'util', 'layer', 'jquery'], function(){
+        var form = layui.form
+                ,layer = layui.layer
+                ,layedit = layui.layedit
+                ,laydate = layui.laydate
+                ,upload = layui.upload
+                ,util = layui.util
+                ,$ = layui.$;
+
+        /*ott 信息 -- start*/
+        var ott = layui.ott;
+        var moduleName = ott.dict.constant.module.server;
+        var moduleInfo = ott.module.getInfo(moduleName);
+        var url = moduleInfo.url;
+        var http = ott.http;
+        var dialog = ott.dialog;
+
+        var utils= ott.myutils;
+        var submitUrl = '';     //表单提交地址
+        var updateType = ott.dict.constant.updateType;
+        var type ;          //类型
+        /*ott 信息 -- end*/
+
+        var id = -1;
+
+        init();
+
+        function init(){
+            initForm();
+            initPageLang();
+            initParam();
+        }
+
+        /*初始化参数*/
+        function initParam(){
+            type = utils.getUpdateType();
+            console.info("更新类型:"+type);
+            if(type === updateType.add){
+                submitUrl = url.add;
+            }else if(type === updateType.edit){
+
+                id = utils.getId();
+                console.info("#id:"+id);
+
+                submitUrl = url.edit;
+                http.post({
+                    url:url.load,
+                    data:{categoryId:id},
+                    success:function(data){
+                        utils.setValue(data.object);
+                        form.render(); //更新全部
+                    }
+                })
+
+            }
+        }
+
+        /*初始化语言*/
+        function initPageLang(){
+
+        }
+
+        /*初始化表单*/
+        function initForm() {
+
+            //日期
+            laydate.render({
+                elem: '#date1'
+            });
+            laydate.render({
+                elem: '#date2'
+            });
+
+            //自定义验证规则
+            form.verify({
+                ip: [/^([1-9]|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])\.([0-9]|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])\.([0-9]|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])\.([0-9]|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])$/, 'ip格式不符合规范']
+                , port: [/^\d$|^\d{2}$|^\d{3}$|^\d{4}$|^[1-5]\d{4}$|^6[0-5][0-5][0-3][0-5]$/, '端口号不符合规范']
+            });
+
+            //监听指定开关
+            form.on('switch(switchTest)', function (data) {
+                console.info(data.elem.name);
+                console.info(this.checked);
+                layer.msg('开关checked：' + (this.checked ? 'true' : 'false'), {
+                    offset: '6px'
+                });
+                switch (data.elem.name) {
+                    case "isPay":
+                        if (this.checked === true) {
+                            //可见、添加判断
+                            $('#referencePrice').parent().parent().removeAttr("style");
+                            $('#referencePrice').attr("lay-verify", "required|number");
+                        } else {
+                            //不可见、删除判断
+                            $('#referencePrice').removeAttr("lay-verify");
+                            $('#referencePrice').parent().parent().attr("style", "display: none");
+                        }
+                        break;
+
+                    case "isShift":
+                        if (this.checked === true) {
+                            //可见、添加判断
+                            $('#timeShift').parent().parent().removeAttr("style");
+                            $('#timeShift').attr("lay-verify", "required|number");
+                        } else {
+                            //不可见、删除判断
+                            $('#timeShift').parent().parent().attr("style", "display: none");
+                            $('#timeShift').removeAttr("lay-verify");
+                        }
+                        break;
+
+                    case "isMultyBitrate":
+                        if (this.checked === true) {
+                            //可见、添加判断
+                            $('#smilUrl').parent().parent().removeAttr("style");
+                            $('#smilUrl').attr("lay-verify", "required");
+                        } else {
+                            //不可见、删除判断
+                            $('#smilUrl').parent().parent().attr("style", "display: none");
+                            $('#smilUrl').removeAttr("lay-verify");
+                        }
+                        break;
+
+                    default:
+                        break;
+                }
+                //layer.tips('', data.othis)
+            });
+
+            //监听提交
+            form.on('submit(submit)', function (data) {
+                http.submit({
+                    url: url.addBase,
+                    elem: '.layui-form', //元素选择器
+                    success: function (data) {
+                        console.info('*************');
+                        layer.msg('提交成功', {icon: 1, time: 1000});//0警告 1 ok 2 错误
+                    },
+                    fail: function (data) {
+                        layer.msg('提交失败', {icon: 2, time: 1000});//0警告 1 ok 2 错误
+                    }
+                });
+                return false;
+            });
+
+            //拖拽上传
+            upload.render({
+                elem: '#test10'
+                , auto: false
+                , field: 'imgfile'
+                , done: function (res) {
+                    console.log(res)
+                }
+            });
+
+            //固定块
+            util.fixbar({
+                bar2: true
+                , css: {right: 30, bottom: 50}
+                , bgcolor: '#393D49C0'
+                , click: function (type) {
+                    if (type === 'bar2') {
+                        layer.msg('带 * 的为必填项');
+                    }
+                }
+            });
+
+            //监听提交
+            form.on('submit', function (data) {
+                console.info(typeof data.field.menuid);
+
+                http.submit({
+                    url: url.addBase,
+                    elem: '.layui-form', //元素选择器
+                    success: function (data) {
+                        layer.msg('提交成功', {icon: 1, time: 1000});//0警告 1 ok 2 错误
+                    },
+                    fail: function (data) {
+                        layer.msg('提交失败', {icon: 2, time: 1000});//0警告 1 ok 2 错误
+                    }
+                });
+                return false;
+            });
+        }
+    });
+
+</script>
+</body>
+</html>
